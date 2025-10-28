@@ -4,9 +4,10 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 type Props = {
     label: string;
     theme?: 'primary';
+    onPress?: () => void;
 };
 
-export default function Button({ label, theme }: Props) {
+export default function Button({ label, theme, onPress }: Props) {
     const styles = StyleSheet.create({
     buttonContainer: {
         width: 320,
@@ -39,8 +40,7 @@ if(theme == 'primary'){
           styles.buttonContainer,
           { borderWidth: 4, borderColor: '#ffd33d', borderRadius: 18 },
         ]}>
-            <Pressable  style={[styles.button, { backgroundColor: '#fff' }]}
-          onPress={() => alert('You pressed a button.')}>
+            <Pressable style={[styles.button, { backgroundColor: '#fff' }]} onPress={onPress}>
             <FontAwesome name="picture-o" size={18} color="#25292e" style={styles.buttonIcon}/>
             <Text style={[styles.buttonLabel, { color: '#25292e' }]}>{label}</Text>
             </Pressable>
